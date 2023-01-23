@@ -6,11 +6,18 @@
 | ----- | ----- |
 |1000. A＋B|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1000.%E2%80%85A%EF%BC%8BB/README.md)|
 |10950. A＋B － 3|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10950.%E2%80%85A%EF%BC%8BB%E2%80%85%EF%BC%8D%E2%80%853/README.md)|
+|14681. 사분면 고르기|[링크](./%EB%B0%B1%EC%A4%80/Bronze/14681.%E2%80%85%EC%82%AC%EB%B6%84%EB%A9%B4%E2%80%85%EA%B3%A0%EB%A5%B4%EA%B8%B0/%EC%82%AC%EB%B6%84%EB%A9%B4%E2%80%85%EA%B3%A0%EB%A5%B4%EA%B8%B0.java)|
 |25304. 영수증|[링크](./%EB%B0%B1%EC%A4%80/Bronze/25304.%E2%80%85%EC%98%81%EC%88%98%EC%A6%9D/%EC%98%81%EC%88%98%EC%A6%9D.java)|
 |2557. Hello World|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2557.%E2%80%85Hello%E2%80%85World/Hello%E2%80%85World.java)|
+|2884. 알람 시계|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2884.%E2%80%85%EC%95%8C%EB%9E%8C%E2%80%85%EC%8B%9C%EA%B3%84/%EC%95%8C%EB%9E%8C%E2%80%85%EC%8B%9C%EA%B3%84.java)|
+### 🚀 Gold
+| 문제번호 | 링크 |
+| ----- | ----- |
+|1202. 보석 도둑|[링크](./%EB%B0%B1%EC%A4%80/Gold/1202.%E2%80%85%EB%B3%B4%EC%84%9D%E2%80%85%EB%8F%84%EB%91%91/%EB%B3%B4%EC%84%9D%E2%80%85%EB%8F%84%EB%91%91.java)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
+|10845. 큐|[링크](./%EB%B0%B1%EC%A4%80/Silver/10845.%E2%80%85%ED%81%90/%ED%81%90.java)|
 |2980. 도로와 신호등|[링크](./%EB%B0%B1%EC%A4%80/Silver/2980.%E2%80%85%EB%8F%84%EB%A1%9C%EC%99%80%E2%80%85%EC%8B%A0%ED%98%B8%EB%93%B1/README.md)|
 ## 📚 프로그래머스
 ### 🚀 lv0
