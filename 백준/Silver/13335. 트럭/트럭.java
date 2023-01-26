@@ -21,16 +21,18 @@ public class Main {
 		L = Integer.parseInt(tokens.nextToken());
 		
 		tokens = new StringTokenizer(input.readLine());
+        //트럭의 순서가 정해져 있다 -> 순서대로 꺼내야한다 -> 큐를 쓰자
 		Queue<Integer> trucks = new LinkedList<>(); //트럭을 담을 큐 선언
-		//트럭의 순서가 정해져 있다 -> 순서대로 꺼내야한다 -> 큐를 쓰자
 		for(int i=0; i<N; i++){
 			trucks.add(Integer.parseInt(tokens.nextToken())); 
 		}
 		
-		int time = 0;
-		int bridgeOK = 0;
+		int time = 0; //소요시간
+		int bridgeOK = 0; //다리에 올라갈 수 있는 무게
+        
 		Queue<Integer> bridge = new LinkedList<>();
-		//다리 길이만큼 큐를 채워서 초기화 시키자.  -> 다리길이에 무게를 넣었다 빼면서 다리를 다 건넌건지 확인하려고
+		//다리 길이만큼 큐를 채워서 초기화 시키자.  
+        //-> 다리길이에 무게를 넣었다 빼면서 다리를 다 건넌건지 확인하려고
 		for(int i=0; i<W; i++) { 
 			bridge.add(0);
 		}
@@ -38,13 +40,13 @@ public class Main {
 		//다리에 채워진 0들이 다 빠져서 비었다면 모든 트럭이 다 건넌 것
 		while(!bridge.isEmpty()) { 
 			time++;
-			bridgeOK -= bridge.poll();
+			bridgeOK -= bridge.poll(); //현재 다리에 올라와 있는 것
 			if(!trucks.isEmpty()) {
 				if(trucks.peek() + bridgeOK <= L) {
 					bridgeOK += trucks.peek();
-					bridge.offer(trucks.poll());
+					bridge.offer(trucks.poll()); //다리에 올라갈 수 있으면 트럭에서 제거하고 다리에 올리기
 				}else {
-					bridge.offer(0);
+					bridge.offer(0); //안되면 다리에 0을 추가하기 
 				}
 			}
 			
