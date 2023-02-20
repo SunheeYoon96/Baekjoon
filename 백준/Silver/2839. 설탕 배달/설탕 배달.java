@@ -3,30 +3,37 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main { //설탕배달
+public class Main {
+
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer tokens;
-	static int N;
-
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		tokens = new StringTokenizer(input.readLine());
-		N = Integer.parseInt(tokens.nextToken());
-		int cnt = 0;
+	static int weight; //최대무게
+	static int bagCnt; //봉지갯수
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		weight = Integer.parseInt(input.readLine());
+		bagCnt = 0;
 		
+		//가장 무거운 5키로 봉지로 많이 채울수록 봉지가 작아질 것
 		while(true) {
-			if(N%5==0) {
-				cnt += N/5;
+			//1. 우선 5키로 봉지로 나눠지면 나눠서 처리함
+			if(weight%5==0) {
+				bagCnt += weight/5;
 				break;
-			}else if(N==4 || N==7) {
-				cnt = -1;
+			//3. 예외))) 4와7은 절대 3과5의 조합으로 만들수가 없어서 빼줌
+			}else if(weight==4 || weight==7) {
+				bagCnt =-1;
 				break;
 			}
-			N -= 3; //5의 배수가 아니면 3을 뺀 뒤에 3키로 가방에 넣었다고 생각하고 가방 갯수를 ++ 해준다. 
-			cnt++;
+			
+			//2. 5로 나누어 떨어지지 않으면 3키로 봉지를 하나씩 사용하면서 무게를 줄여감.
+			weight -=3;
+			bagCnt++;
 		}
-		System.out.println(cnt);
 		
+		
+		System.out.println(bagCnt);
+
 	}
 
 }
