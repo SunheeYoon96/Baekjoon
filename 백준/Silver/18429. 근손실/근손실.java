@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -26,42 +25,29 @@ public class Main {
 		}
 		
 		cnt=0;
-		doWork(0, new boolean[N], new int[N]);
+		doWork(0, new boolean[N], 500);
 		System.out.println(cnt);
-		
-
 	}
 	
-	private static void doWork(int nthpick, boolean[] visited, int[] choosed) {
-		
-		if(nthpick == N && checkSum(choosed)) {
+	private static void doWork(int nthpick, boolean[] visited, int sum) {
+		if(nthpick == N) {
 			cnt++;
-			//System.out.println(Arrays.toString(choosed));
 			return;
 		}
 		
 		for(int i=0; i<N; i++) {
 			if(!visited[i]) {
 				visited[i] = true;
-				choosed[nthpick] = weightSet[i];
-				doWork(nthpick+1, visited, choosed);	
+				sum += weightSet[i]-K;
+				//일일 중량이 500을 넘으면 다음 선택을 하는 것으로 가지치기
+				if(sum >= 500) {
+					doWork(nthpick+1, visited, sum);
+				}
+				//안넘으면 다시 뒤로 돌림
 				visited[i] = false;
-			}
+				sum -= weightSet[i]-K;
+			}	
 		}
-	}
-
-	private static boolean checkSum(int[] choosed) {
-		int sum = 500;
-		for(int i=0; i<choosed.length; i++) {
-			sum += choosed[i];
-			sum -= K;
-			
-			if(sum<500) {
-				return false;
-			}
-		}
-		return true;
-		
 	}
 
 	static String instr = "3 4\r\n" + 
