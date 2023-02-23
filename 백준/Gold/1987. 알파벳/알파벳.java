@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +19,6 @@ public class Main {
 		R = Integer.parseInt(tokens.nextToken());
 		C = Integer.parseInt(tokens.nextToken());
 		
-		
 		board = new char[R][C];
 		for(int r=0; r<R; r++) {
 			line = input.readLine();
@@ -29,13 +27,18 @@ public class Main {
 			}
 		}
 		
-		cnt=0;
-		maxVal = 0;
-		visitAlpha = new boolean[26];
+		cnt=0; //지나온 칸 횟수
+		maxVal = 0; //최대 칸 수
+		//알파벳으로만 이루어진 배열 -> 방문도 알파벳만 확인
+		visitAlpha = new boolean[26]; 
 		
+		//시작지점을 넣어주고 DFs실행
 		char start = board[0][0];
 		visitAlpha[start-'A'] = true;
+		
 		dfs(0, 0, 1);
+		
+		//출력
 		System.out.println(maxVal);
 
 	}
@@ -45,14 +48,16 @@ public class Main {
 			int nr = r + deltas[d][0];
 			int nc = c + deltas[d][1];
 			
-			if(isIn(nr, nc)) {
+			if(isIn(nr, nc)) {//범위내에 존재하면
 				char nextC = board[nr][nc];
 				
 				if(!visitAlpha[nextC - 'A']) { //방문하지 않았다면
 					//방문체크 하고 dfs
 					visitAlpha[nextC - 'A'] = true;
 					dfs(nr, nc, cnt+1);
-					visitAlpha[nextC - 'A'] = false; //이걸해야 백트래킹이라는데..
+					//다시 돌아왔을 때 초기화를 해줘야지 다른애들을 찾음!!!!!!!!!!!!!!!!!!!!!!!!
+					//까먹지 말자............ㅠ
+					visitAlpha[nextC - 'A'] = false; 
 				}
 			}
 		}
@@ -65,8 +70,11 @@ public class Main {
 		return true;
 	}
 	
-	static String instr = "2 4\r\n" + 
-			"CAAB\r\n" + 
-			"ADCB";
+	static String instr = "5 5\r\n" + 
+			"IEFCJ\r\n" + 
+			"FHFKC\r\n" + 
+			"FFALF\r\n" + 
+			"HFGCF\r\n" + 
+			"HMCHH";
 
 }
