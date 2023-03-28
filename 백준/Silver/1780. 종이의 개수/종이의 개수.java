@@ -34,13 +34,13 @@ public class Main {
 		
 		divide(0,0,N);
 		
-		//output.append(cnt1).append("\n");
-		//output.append(cnt2).append("\n");
-		//output.append(cnt3);
-		//System.out.println(output);
-		System.out.println(cnt1);
-		System.out.println(cnt2);
-		System.out.println(cnt3);
+		output.append(cnt1).append("\n");
+		output.append(cnt2).append("\n");
+		output.append(cnt3);
+		System.out.println(output);
+		//System.out.println(cnt1);
+		//System.out.println(cnt2);
+		//System.out.println(cnt3);
 
 	}
 
@@ -51,13 +51,11 @@ public class Main {
 		
 		for(int r=0, rEnd = r+size; r<rEnd; r++) {
 			for(int c=0, cEnd=c+size; c<cEnd; c++) {
-				dividedMap[r][c] = map[r+startR][r+startC];
+				dividedMap[r][c] = map[r+startR][c+startC];
 			}
 		}
 		
-		
-		if(check(startR, startC, size)) {
-			//System.out.println(check(dividedMap));
+		if(check(dividedMap)) {
 			if(dividedMap[0][0]==-1) {
 				cnt1++;
 			}else if(dividedMap[0][0]==0) {
@@ -83,11 +81,11 @@ public class Main {
 		
 	}
 	
-	private static Boolean check(int sr, int sc, int s) {
-		int start = map[sr][sc];
+	private static Boolean check(int map[][]) {
+		int start = map[0][0];
 		
-		for (int r = sr; r < sr+s; r++) {
-			for (int c = sc; c < sc+s; c++) {
+		for (int r = 0; r < map.length; r++) {
+			for (int c = 0; c < map[r].length; c++) {
 				if(start!=map[r][c]) {
 					return false;
 				}
