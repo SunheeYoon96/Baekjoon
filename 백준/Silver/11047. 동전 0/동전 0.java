@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -10,50 +9,43 @@ public class Main {
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer tokens;
 	
-	static int N, K, coins[], dp[];
+	static int N,K, coins[],cnt;
 
 	public static void main(String[] args) throws IOException {
 		//input = new BufferedReader(new StringReader(instr));
-		
+        
 		tokens = new StringTokenizer(input.readLine());
-		
 		N = Integer.parseInt(tokens.nextToken());
 		K = Integer.parseInt(tokens.nextToken());
 		
 		coins = new int[N];
-		
 		for (int i = 0; i < N; i++) {
 			coins[i] = Integer.parseInt(input.readLine());
 		}
 		
-		dp = new int[K+1];
-		Arrays.fill(dp, Integer.MAX_VALUE -1);
-		dp[0]=0;
-		
-		for(int i=1; i<=K; i++) {
-			for(int j=0; j<coins.length; j++) {
-				if(i-coins[j]>=0) {
-					dp[i] = Math.min(dp[i-coins[j]]+1, dp[i]);					
-				}
+		for(int i=coins.length-1; i>=0; i--) {
+			if(K>=coins[i]) {
+				cnt +=  K/coins[i];
+				K %= coins[i];
+				//System.out.println(K);
+				
 			}
-			
 		}
 		
-		//System.out.println(Arrays.toString(dp));
-		if(dp[K] == Integer.MAX_VALUE-1) {
-			System.out.println(-1);
-		}else {
-			
-			System.out.println(dp[K]);
-		}
-		
-		//System.out.println(dp[K]);
+		System.out.println(cnt);
 
 	}
 	
-	private static String instr = "3 15\r\n" + 
+	private static String instr = "10 4200\r\n" + 
 			"1\r\n" + 
 			"5\r\n" + 
-			"12";
+			"10\r\n" + 
+			"50\r\n" + 
+			"100\r\n" + 
+			"500\r\n" + 
+			"1000\r\n" + 
+			"5000\r\n" + 
+			"10000\r\n" + 
+			"50000";
 
 }
