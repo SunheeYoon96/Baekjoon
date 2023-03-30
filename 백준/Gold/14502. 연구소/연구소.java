@@ -15,14 +15,6 @@ import java.util.StringTokenizer;
  * (3 ≤ N, M ≤ 8)
  * 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수
  * 빈 칸의 개수는 3개 이상
- * 
- * [출력] 
- * 0
- * @author 윤선희
- * @since 2023.03.29
- * @see https://www.acmicpc.net/problem/14502
- * @performance 
- * @category #dfs #dp 
  */
 
 public class Main {
@@ -36,7 +28,6 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		//input = new BufferedReader(new StringReader(instr));
-		
 		tokens = new StringTokenizer(input.readLine());
 		N = Integer.parseInt(tokens.nextToken());
 		M = Integer.parseInt(tokens.nextToken());
@@ -64,7 +55,7 @@ public class Main {
 	private static void simulate(int cnt) {
 		//answer=0;
 		if(wallCnt==3) {
-			//3. 벽을 3칸 모두 구했으면 바이러스 퍼뜨리기
+			//3. 벽을 3칸 모두 구했으면 
 			for (int r = 0; r < N; r++) {
 				for (int c = 0; c < M; c++) {
 					tmpMap[r][c] = map[r][c];
@@ -74,6 +65,7 @@ public class Main {
 			for (int r = 0; r < N; r++) {
 				for (int c = 0; c < M; c++) {
 					if (tmpMap[r][c]==2) {
+						//바이러스 퍼뜨리기
 						spreadVirus(r, c);
 					}
 				}
@@ -101,6 +93,7 @@ public class Main {
 		
 	}
 
+    //안전영역 갯수 카운팅
 	private static int countSafeSpace() {
 		int safeCnt=0;
 		
@@ -113,6 +106,7 @@ public class Main {
 		return safeCnt;
 	}
 
+    //바이러스퍼뜨리기
 	private static void spreadVirus(int x, int y) {
 		for (int d = 0; d < deltas.length; d++) {
 			int nr = x + deltas[d][0];
@@ -128,19 +122,12 @@ public class Main {
 		}
 		
 	}
-	
+
+    //격자 범위확인
 	private static boolean isIn(int nr, int nc) {
 		if(nr>=0 && nr<N && nc>=0 && nc<M) return true;
 		return false;
 	}
 
-	private static String instr = "7 7\r\n" + 
-			"2 0 0 0 1 1 0\r\n" + 
-			"0 0 1 0 1 2 0\r\n" + 
-			"0 1 1 0 1 0 0\r\n" + 
-			"0 1 0 0 0 0 0\r\n" + 
-			"0 0 0 0 0 1 1\r\n" + 
-			"0 1 0 0 0 0 0\r\n" + 
-			"0 1 0 0 0 0 0";
 
 }
