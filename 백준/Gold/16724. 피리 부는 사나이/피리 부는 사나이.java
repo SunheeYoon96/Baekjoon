@@ -1,9 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.util.StringTokenizer;
 
+/**
+ * [키워드]
+ * 방향을 따라가면서 세이프존을 만들어 사람들이 빠져나갈 수 있게 하자.
+ * 방향을 따라나간다 -> 사이클이 생기면 세이프존 만들수 있다.
+ * 즉 , 사이클의 갯수가 세이프존의 갯수
+ * 
+ */
 
 public class Main {
 	
