@@ -3,21 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-/**
- * [키워드]
- * 
- * [풀이과정]
- * 
- * [입력]
- * [출력] 
- * 
- * @author 윤선희
- * @since 
- * @see
- * @performance
- * @category #
- */
-
 public class Main {
 	
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -40,7 +25,6 @@ public class Main {
 		
 		int kc = kingLocation.charAt(0)-'A';
 		int kr = Math.abs(kingLocation.charAt(1)-'1'-7);
-//		System.out.println(kr+":"+kc);
 		
 		int sc = stoneLocation.charAt(0)-'A';
 		int sr = Math.abs(stoneLocation.charAt(1)-'1'-7);
@@ -75,15 +59,9 @@ public class Main {
 		//최종 킹의 위치 출력하기
 		String finalKing = (char)(kc+'A') +  "" + (Math.abs(kr-7)+1) + "";
 		String finalStone = (char)(sc+'A') + "" + (Math.abs(sr-7)+1) + "";
-		
-//		System.out.println(kr+":"+kc);
-//		System.out.println((char)(kc+'A'));
-//		System.out.println(finalKing);
-		
+
 		output.append(finalKing).append("\n").append(finalStone).append("\n");
 		System.out.println(output);
-		
-
 	}
 	
 	private static int changeDir(String cmd) {
