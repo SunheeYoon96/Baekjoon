@@ -26,7 +26,6 @@ public class Main {
 		for (int i = 0; i < N; i++) {
 			//words[i] = input.readLine();
 			String line = input.readLine();
-			char c = ' ';
 			for (int j = 0; j < line.length(); j++) {
 				//입력받을때 단어의 알파벳을 비트마스킹으로 체크해두기
 				words[i] |= (1 << (line.charAt(j)-97));				
@@ -40,8 +39,7 @@ public class Main {
 			tokens = new StringTokenizer(input.readLine());
 			int n = Integer.parseInt(tokens.nextToken());
 			String str = tokens.nextToken();
-			char c = str.charAt(0);
-			check = c-97;
+			check = str.charAt(0) -97;
 			
 			rememberCnt = 0;
 			
