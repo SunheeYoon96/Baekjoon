@@ -19,7 +19,7 @@ public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		N = Integer.parseInt(input.readLine());
 		
-		timeTable = new int[MAXVAL+2];
+		timeTable = new int[MAXVAL+2]; //endTime+1인덱스를 사용하기위해 2칸 늘림
 		
 		for (int i = 0; i < N; i++) {
 			tokens = new StringTokenizer(input.readLine());
