@@ -30,7 +30,7 @@ public class Main {
 		
 		for (int i = 0; i < N; i++) {
 			int x = Integer.parseInt(input.readLine());
-			//numbers[i] = Integer.parseInt(input.readLine());
+			numbers[i] = x;
 			nums.add(x);
 		}
 		
@@ -39,16 +39,43 @@ public class Main {
 		 * Arrays.sort(numbers);
 		*/
 		
-		//arraylist의 timsort
-		Collections.sort(nums);
+		//1. arraylist의 timsort
+		//Collections.sort(nums);
 		
-		for(int val : nums) {
-			output.append(val).append("\n");
-		}
+		//2. counting sort(계수 정렬)
+		countingSort(numbers);
+		
+//		for(int val : nums) {
+//			output.append(val).append("\n");
+//		}
 		
 		System.out.println(output);
 		
 
+	}
+
+	//카운팅 정렬
+	private static void countingSort(int[] arr) {
+		
+		//수의 범위
+		// -1,000,000 ~ 1,000,000
+		//기준 0 의 인덱스를 1,000,000 로 잡는다.
+		
+		boolean[] counting = new boolean[2000001];
+		
+		for (int i = 0; i < N; i++) {
+			int idx = arr[i] + 1000000;
+			counting[idx] = true;
+		}
+		
+		for (int i = 0; i < counting.length; i++) {
+			if(counting[i]) {
+				output.append(i-1000000).append("\n");
+				
+			}
+		}
+		
+		
 	}
 
 }
