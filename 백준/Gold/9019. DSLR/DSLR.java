@@ -5,6 +5,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+
 public class Main {
 	
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -56,29 +57,33 @@ public class Main {
 			
 			while (!que.isEmpty()) {
 				Register now = que.poll();
+				int nD = now.D();
+				int nS = now.S();
+				int nL = now.L();
+				int nR = now.R();
 				
 				if(now.num == B) {
 					output.append(now.cmd).append("\n");
 				}
 				
-				if(!visited[now.D()]) {
-					que.add(new Register(now.D(), now.cmd+"D"));
-					visited[now.D()] = true;
+				if(!visited[nD]) {
+					que.add(new Register(nD, now.cmd+"D"));
+					visited[nD] = true;
 				}
 				
-				if(!visited[now.S()]) {
-					que.add(new Register(now.S(), now.cmd+"S"));
-					visited[now.S()] = true;
+				if(!visited[nS]) {
+					que.add(new Register(nS, now.cmd+"S"));
+					visited[nS] = true;
 				}
 				
-				if(!visited[now.L()]) {
-					que.add(new Register(now.L(), now.cmd+"L"));
-					visited[now.L()] = true;
+				if(!visited[nL]) {
+					que.add(new Register(nL, now.cmd+"L"));
+					visited[nL] = true;
 				}
 				
-				if(!visited[now.R()]) {
-					que.add(new Register(now.R(), now.cmd+"R"));
-					visited[now.R()] = true;
+				if(!visited[nR]) {
+					que.add(new Register(nR, now.cmd+"R"));
+					visited[nR] = true;
 				}
 				
 			}
