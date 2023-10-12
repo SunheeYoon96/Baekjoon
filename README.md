@@ -171,6 +171,7 @@
 |9251. LCS|[링크](./%EB%B0%B1%EC%A4%80/Gold/9251.%E2%80%85LCS/LCS.java)|
 |9466. 텀 프로젝트|[링크](./%EB%B0%B1%EC%A4%80/Gold/9466.%E2%80%85%ED%85%80%E2%80%85%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
+|9935. 문자열 폭발|[링크](./%EB%B0%B1%EC%A4%80/Gold/9935.%E2%80%85%EB%AC%B8%EC%9E%90%EC%97%B4%E2%80%85%ED%8F%AD%EB%B0%9C/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
