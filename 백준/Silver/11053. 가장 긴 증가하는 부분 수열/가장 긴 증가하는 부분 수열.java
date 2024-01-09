@@ -1,35 +1,45 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int arr[] = new int[N];
-		int LIS[] = new int[N];
-		
-		for (int i = 0; i < N; i++) {
-			arr[i] = sc.nextInt();
-		}
-		
-		int max=0;
-		
-		for (int i = 0; i < N; i++) {
-			LIS[i]=1; //자신만 끝에 세웠을 경우 1의 길이 가능!
-			
-			for (int j = 0; j < i; j++) {
-				//나를 끝으로하는 증가수열이 가능하면서 ~~ ?
-				if(arr[j] < arr[i] && LIS[i]<LIS[j]+1) {
-					LIS[i] = LIS[j]+1;
-				}
-			}
-			
-			if(max < LIS[i]) max = LIS[i];
-			
-		}
-		
-		System.out.println(max);
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static StringBuilder output = new StringBuilder();
+    static StringTokenizer tokens;
 
-	}
+    static int N, nums[], LIS[], answer;
 
+    public static void main(String[] args) throws IOException {
+        N = Integer.parseInt(input.readLine());
+
+        nums = new int[N];
+        LIS = new int[N];
+        Arrays.fill(LIS, 1);
+
+        tokens = new StringTokenizer(input.readLine());
+        for (int i = 0; i < N; i++) {
+           nums[i] = Integer.parseInt(tokens.nextToken());
+        }
+
+        answer = Integer.MIN_VALUE;
+
+        for (int i = 0; i < N; i++) {
+            for(int j=0; j<i; j++){
+                if(nums[j]<nums[i]  && LIS[i]<LIS[j]+1){
+                    LIS[i] = LIS[j]+1;
+                }
+            }
+            answer = Math.max(answer, LIS[i]);
+        }
+
+        System.out.println(answer);
+
+
+
+
+    }
 }
