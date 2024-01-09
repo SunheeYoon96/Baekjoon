@@ -23,6 +23,7 @@ public class Main {
 
     }
 
+    //거듭제곱하는 수가 너무 크니까 분할정복으로 계산하는 것 
     private static long multiple(int a, int b, int mod) {
         if(b==1){
             return a%mod;
