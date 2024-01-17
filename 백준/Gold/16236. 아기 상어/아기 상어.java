@@ -8,7 +8,7 @@ public class Main {
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer tokens;
 
-    static int N, sea[][], time;
+    static int N, sea[][], time, totalFishCnt;
     static int deltas[][] = {{1,0},{0,1},{0,-1},{-1,0}};
     static Shark babyShark;
 
@@ -57,6 +57,7 @@ public class Main {
         N = Integer.parseInt(input.readLine());
 
         sea = new int[N][N];
+        totalFishCnt = 0;
 
         for (int r = 0; r < N; r++) {
             tokens = new StringTokenizer(input.readLine());
@@ -65,6 +66,10 @@ public class Main {
                 if(val==9){
                     babyShark = new Shark(r,c,2,0);
                     val = 0;
+                }
+
+                if(val!=0) {
+                    totalFishCnt++;
                 }
                 sea[r][c] = val;
             }
@@ -80,6 +85,11 @@ public class Main {
 
     private static void simulation(Shark babyShark) {
         while (true){
+
+            if(totalFishCnt<=0){
+                break;
+            }
+
             //0. 아기상어 커질 수 있니?
             if(babyShark.cnt == babyShark.size){
                 babyShark.size += 1;
@@ -109,6 +119,7 @@ public class Main {
             babyShark.y = now.y;
             babyShark.cnt += 1;
             sea[now.x][now.y] = 0;
+            totalFishCnt--;
 
             //시간흐름
             time += now.dist;
@@ -118,8 +129,6 @@ public class Main {
 //            System.out.println();
 
         }
-
-
 
     }
 
