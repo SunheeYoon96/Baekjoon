@@ -25,8 +25,13 @@ public class Main {
         tokens = new StringTokenizer(input.readLine());
         A = Integer.parseInt(tokens.nextToken());
         B = Integer.parseInt(tokens.nextToken());
+        int answer = 0;
 
-        int answer = bfs(A);
+        if(B<A){
+            answer = -1;
+        }else{
+            answer = bfs(A);
+        }
 
         System.out.println(answer);
     }
