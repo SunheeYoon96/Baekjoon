@@ -11,6 +11,7 @@ public class Main {
 
     static int N, M, K, X, dist[];
     static List<List<Integer>> nodes;
+    static List<Integer> answer;
 
     public static void main(String[] args) throws IOException {
         tokens = new StringTokenizer(input.readLine());
@@ -34,17 +35,16 @@ public class Main {
         dist = new int[N+1];
         Arrays.fill(dist, -1);
 
+        answer = new ArrayList<>();
+        
         bfs(X);
 
-        boolean flag = false;
-        for (int i = 1; i <= N; i++) {
-            if(dist[i]==K) {
-                output.append(i).append("\n");
-                flag = true;
-            }
+        Collections.sort(answer);
+        for(int x : answer){
+            output.append(x).append("\n");
         }
 
-        System.out.println(flag ? output : "-1");
+        System.out.println(!answer.isEmpty() ? output : "-1");
     }
 
     private static void bfs(int start) {
@@ -54,6 +54,9 @@ public class Main {
 
         while (!que.isEmpty()){
             int now = que.poll();
+
+            if (dist[now] > K) return;
+            if (dist[now] == K) answer.add(now);
 
             for(int vertex : nodes.get(now)){
                 if (dist[vertex] == -1) { //방문한 적이 없음.
