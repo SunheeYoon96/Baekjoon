@@ -112,6 +112,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |10026. 적록색약|[링크](./%EB%B0%B1%EC%A4%80/Gold/10026.%E2%80%85%EC%A0%81%EB%A1%9D%EC%83%89%EC%95%BD/%EC%A0%81%EB%A1%9D%EC%83%89%EC%95%BD.java)|
+|1005. ACM Craft|[링크](./%EB%B0%B1%EC%A4%80/Gold/1005.%E2%80%85ACM%E2%80%85Craft/README.md)|
 |1068. 트리|[링크](./%EB%B0%B1%EC%A4%80/Gold/1068.%E2%80%85%ED%8A%B8%EB%A6%AC/README.md)|
 |1069. 집으로|[링크](./%EB%B0%B1%EC%A4%80/Gold/1069.%E2%80%85%EC%A7%91%EC%9C%BC%EB%A1%9C/%EC%A7%91%EC%9C%BC%EB%A1%9C.java)|
 |11000. 강의실 배정|[링크](./%EB%B0%B1%EC%A4%80/Gold/11000.%E2%80%85%EA%B0%95%EC%9D%98%EC%8B%A4%E2%80%85%EB%B0%B0%EC%A0%95/README.md)|
