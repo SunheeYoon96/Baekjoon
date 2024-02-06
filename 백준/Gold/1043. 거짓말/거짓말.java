@@ -1,80 +1,92 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
 
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer tokens;
 
-    static int N, M, lierCnt, lierNums[], answer;
-    static List<Integer> parties[], peopleInParties[];
-    static boolean canLieGrup[];
+    static int N, M, lierCnt, answer, parents[];
+    static boolean knowPeoples[];
+    static List<Integer>[] partyList;
 
     public static void main(String[] args) throws IOException {
         tokens = new StringTokenizer(input.readLine());
         N = Integer.parseInt(tokens.nextToken());
         M = Integer.parseInt(tokens.nextToken());
 
-        canLieGrup = new boolean[M];
-        parties = new List[M];
-        peopleInParties = new List[N+1];
-        for (int i = 0; i < N+1; i++) {
-            peopleInParties[i] = new ArrayList<>();
-        }
+        answer = 0;
+        knowPeoples = new boolean[N+1];
+        partyList = new List[M];
         for (int i = 0; i < M; i++) {
-            parties[i] = new ArrayList<>();
+            partyList[i] = new ArrayList<>();
         }
 
         tokens = new StringTokenizer(input.readLine());
         lierCnt = Integer.parseInt(tokens.nextToken());
-        lierNums = new int[lierCnt];
+
+        //진실을 아는 사람들 체킹
         for (int i = 0; i < lierCnt; i++) {
-            lierNums[i] = Integer.parseInt(tokens.nextToken());
+            int num = Integer.parseInt(tokens.nextToken());
+            knowPeoples[num] = true;
         }
+
+        makeSet();
 
         for (int i = 0; i < M; i++) {
             tokens = new StringTokenizer(input.readLine());
-            int cnt = Integer.parseInt(tokens.nextToken());
-            for (int j = 0; j < cnt; j++) {
-                int person = Integer.parseInt(tokens.nextToken());
-                parties[i].add(person);
-                peopleInParties[person].add(i);
+            int memberCnt = Integer.parseInt(tokens.nextToken());
+            int now = Integer.parseInt(tokens.nextToken());
+            partyList[i].add(now);
+            for (int j = 1; j < memberCnt; j++) {
+                int next = Integer.parseInt(tokens.nextToken());
+                union(now, next);
+                partyList[i].add(next);
+                now = next;
             }
         }
 
-        //입력값으로 주어지는 파티의 구성원들 과
-        //특정 사람이 참여하는 파티 모두 저장해놓고
-        //둘다 dfs 를 해야함.
-        for(int x : lierNums){
-            dfs(x);
+        for (int i = 1; i <= N; i++) {
+            if(knowPeoples[i]){
+                knowPeoples[find(i)] = true;
+            }
         }
 
-        for (int i = 0; i < canLieGrup.length; i++) {
-            if (!canLieGrup[i]) {
-                answer++;
-            }
+        for (int i = 0; i < M; i++) {
+            int parent = find(partyList[i].get(0));
+            if(!knowPeoples[parent]) answer++;
         }
 
         System.out.println(answer);
-
-
-
     }
 
-    private static void dfs(int x) {
-        for (int i = 0; i < peopleInParties[x].size(); i++) {
-            int party = peopleInParties[x].get(i);
-            if(!canLieGrup[party]){
-                canLieGrup[party] = true;
-
-                for (int j = 0; j < parties[party].size(); j++) {
-                    int person = parties[party].get(j);
-                    dfs(person);
-                }
+    private static void union(int now, int next) {
+        int a = find(now);
+        int b = find(next);
+        if(a != b){
+            if(a > b){
+                parents[a] = b;
+            }else {
+                parents[b] = a;
             }
         }
+    }
 
+    private static int find(int next) {
+        if(parents[next]==next){
+            return  next;
+        }
+        return  parents[next] = find(parents[next]);
+    }
+
+    private static void makeSet() {
+        parents = new int[N+1];
+        for (int i = 0; i <= N; i++) {
+            parents[i] = i;
+        }
     }
 }
