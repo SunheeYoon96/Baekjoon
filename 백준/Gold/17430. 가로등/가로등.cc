@@ -1,17 +1,18 @@
 #include <iostream>
 #include <map>
 #include <set>
+
 using namespace std;
 
 int main() {
-    ios_base :: sync_with_stdio(false); 
-    cin.tie(NULL); 
-    cout.tie(NULL);
-    
     int T;
     cin >> T;
 
     while (T--) {
+        ios_base :: sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+        
         int N;
         cin >> N;
 
@@ -27,7 +28,6 @@ int main() {
 
         bool isBalanced = true;
 
-        // 각 x 그룹의 y 값 패턴 비교
         for (auto& [x, yList] : streetLamps) {
             if (yList != group) {
                 isBalanced = false;
